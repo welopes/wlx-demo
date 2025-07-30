@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "WLX Demo"
 include(":app")
- 
+include(":modules:journey:login")
