@@ -16,6 +16,22 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        val gprUser = providers.gradleProperty("gpr.user").orNull ?: System.getenv("GPR_USER")
+        val gprKey = providers.gradleProperty("gpr.key").orNull ?: System.getenv("GPR_TOKEN")
+        maven {
+            url = uri("https://maven.pkg.github.com/welopes/wlx-logger")
+            credentials {
+                username = gprUser
+                password = gprKey
+            }
+        }
+        maven {
+            url = uri("https://maven.pkg.github.com/welopes/wlx-analytics")
+            credentials {
+                username = gprUser
+                password = gprKey
+            }
+        }
     }
 }
 
