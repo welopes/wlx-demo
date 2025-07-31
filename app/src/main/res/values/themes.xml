@@ -2,4 +2,9 @@
 <resources>
 
     <style name="Theme.WLXDemo" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.WLXDemo.Splash" parent="Theme.SplashScreen" >
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.WLXDemo</item>
+    </style>
 </resources>
