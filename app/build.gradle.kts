@@ -50,7 +50,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
 
     // Koin
@@ -66,7 +66,7 @@ dependencies {
     testImplementation(libs.koin.test.junit4)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
