@@ -1,6 +1,7 @@
 [versions]
+#wlxUikit = "0.0.1"
 activityCompose = "1.10.1"
-agp = "8.11.1"
+agp = "8.12.0"
 composeBom = "2025.07.00"
 coreKtx = "1.16.0"
 coreSplashscreen = "1.0.1"
@@ -11,11 +12,11 @@ koinAndroid = "4.1.0"
 kotlin = "2.2.0"
 lifecycleRuntimeKtx = "2.9.2"
 navigationCompose = "2.9.3"
+timber = "5.0.1"
 wlxAnalytics = "0.0.1"
 wlxFoundation = "0.0.1"
 wlxLogger = "0.0.1"
 wlxStorage = "0.0.1"
-#wlxUikit = "0.0.1"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -39,6 +40,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndr
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroid" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinAndroid" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinAndroid" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 wlx-analytics = { module = "com.github.welopes:wlx-analytics", version.ref = "wlxAnalytics" }
 wlx-foundation = { module = "com.github.welopes:wlx-foundation", version.ref = "wlxFoundation" }
 wlx-logger = { module = "com.github.welopes:wlx-logger", version.ref = "wlxLogger" }
