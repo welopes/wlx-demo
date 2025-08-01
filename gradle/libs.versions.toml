@@ -14,6 +14,8 @@ navigationCompose = "2.9.3"
 wlxAnalytics = "0.0.1"
 wlxFoundation = "0.0.1"
 wlxLogger = "0.0.1"
+wlxStorage = "0.0.1"
+#wlxUikit = "0.0.1"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -40,6 +42,8 @@ koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "
 wlx-analytics = { module = "com.github.welopes:wlx-analytics", version.ref = "wlxAnalytics" }
 wlx-foundation = { module = "com.github.welopes:wlx-foundation", version.ref = "wlxFoundation" }
 wlx-logger = { module = "com.github.welopes:wlx-logger", version.ref = "wlxLogger" }
+wlx-storage = { module = "com.github.welopes:wlx-storage", version.ref = "wlxStorage" }
+#wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
 
 [bundles]
 compose = [
@@ -51,7 +55,7 @@ compose = [
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-android-library = { id = "com.android.library", version.ref = "agp" }
 

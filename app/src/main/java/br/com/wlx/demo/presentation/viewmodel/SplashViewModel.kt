@@ -18,7 +18,7 @@ class SplashViewModel : ViewModel() {
 
     private fun checkAuthentication() {
         runBlocking {
-            delay(1000L)
+            delay(10L)
         }
     }
 }

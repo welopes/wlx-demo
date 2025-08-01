@@ -25,20 +25,6 @@ dependencyResolutionManagement {
                 password = gprKey
             }
         }
-        maven {
-            url = uri("https://maven.pkg.github.com/welopes/wlx-analytics")
-            credentials {
-                username = gprUser
-                password = gprKey
-            }
-        }
-        maven {
-            url = uri("https://maven.pkg.github.com/welopes/wlx-foundation")
-            credentials {
-                username = gprUser
-                password = gprKey
-            }
-        }
     }
 }
 

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,14 +8,14 @@ plugins {
 
 android {
     namespace = "br.com.wlx.demo"
-    compileSdk = 36
+    compileSdk = rootProject.extra["compileSdkVersion"] as Int
 
     defaultConfig {
         applicationId = "br.com.wlx.demo"
-        minSdk = 26
-        targetSdk = 36
+        minSdk = rootProject.extra["minSdkVersion"] as Int
+        targetSdk = rootProject.extra["targetSdkVersion"] as Int
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,11 +30,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = rootProject.extra["javaVersionCompatibility"] as JavaVersion
+        targetCompatibility = rootProject.extra["javaVersionCompatibility"] as JavaVersion
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(rootProject.extra["jvmTarget"] as JvmTarget)
+        }
     }
     buildFeatures {
         compose = true
@@ -40,26 +44,26 @@ android {
 }
 
 dependencies {
-    implementation(project(":modules:journey:login"))
-
-    implementation(libs.wlx.analytics)
-    implementation(libs.wlx.logger)
-    implementation(libs.wlx.foundation)
-
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-
-    // Koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
-
-    //Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
+
+    // App Modules
+    implementation(project(":modules:journey:login"))
+
+    // Structural Libraries
+    implementation(libs.wlx.logger)
+    implementation(libs.wlx.foundation)
+    implementation(libs.wlx.analytics)
+//    implementation(libs.wlx.uikit)
+    implementation(libs.wlx.storage)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

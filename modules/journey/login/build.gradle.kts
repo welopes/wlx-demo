@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -6,10 +8,10 @@ plugins {
 
 android {
     namespace = "br.com.wlx.login"
-    compileSdk = 36
+    compileSdk =  rootProject.extra["compileSdkVersion"] as Int
 
     defaultConfig {
-        minSdk = 26
+        minSdk =  rootProject.extra["minSdkVersion"] as Int
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -25,11 +27,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = rootProject.extra["javaVersionCompatibility"] as JavaVersion
+        targetCompatibility = rootProject.extra["javaVersionCompatibility"] as JavaVersion
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
     buildFeatures {
         compose = true
@@ -37,21 +41,18 @@ android {
 }
 
 dependencies {
-    implementation(libs.wlx.logger)
-    implementation(libs.wlx.foundation)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.bundles.compose)
-
-    // Koin
-    implementation(libs.koin.android)
-    implementation(libs.koin.androidx.compose)
-
-    //Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.bundles.compose)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(platform(libs.compose.bom))
+
+    // Structural Libraries
+    implementation(libs.wlx.logger)
+    implementation(libs.wlx.foundation)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)
