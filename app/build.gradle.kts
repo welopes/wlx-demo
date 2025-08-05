@@ -70,8 +70,9 @@ dependencies {
     implementation(libs.wlx.foundation.api)
     implementation(libs.wlx.analytics.api)
     implementation(libs.wlx.analytics.impl)
-//    implementation(libs.wlx.uikit)
-//    implementation(libs.wlx.storage)
+    implementation(libs.wlx.storage.api)
+    implementation(libs.wlx.storage.impl)
+    //    implementation(libs.wlx.uikit)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

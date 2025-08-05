@@ -5,10 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import br.com.wlx.demo.AppNavigation
 import br.com.wlx.demo.presentation.viewmodel.SplashViewModel
 import br.com.wlx.demo.ui.theme.WLXDemoTheme
+import br.com.wlx.logger.api.Logger
+import br.com.wlx.storage.api.Storage
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
@@ -30,20 +35,14 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-//        val logger: Logger by inject()
-//        logger.debug( "MainActivity created")
-//        logger.tag("Test").verbose( "MainActivity created")
-//        logger.tag("Test").info( "MainActivity created")
-//        logger.tag("Test").warn( "MainActivity created")
-//        logger.analytics( "MainActivity created")
-//        logger.tag("Test").error( "MainActivity created")
-//        logger.tag("Test").fatal( "MainActivity created")
-//
-//        val storage: Storage by inject()
-//        lifecycleScope.launch {
-//            val key = "welcome_message"
-//            storage.putString(key, "Welcome to WLX Demo!")
-//            logger.info(storage.getString(key).first() ?: "No welcome message found")
-//        }
+        val logger: Logger by inject()
+        logger.debug( "MainActivity created")
+
+        val storage: Storage by inject()
+        lifecycleScope.launch {
+            val key = "welcome_message"
+            storage.putString(key, "Welcome to WLX Demo!")
+            logger.info(storage.getString(key) ?: "No welcome message found")
+        }
     }
 }

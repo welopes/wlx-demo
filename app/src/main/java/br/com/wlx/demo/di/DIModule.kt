@@ -8,6 +8,8 @@ import br.com.wlx.demo.BuildConfig
 import br.com.wlx.demo.presentation.viewmodel.SplashViewModel
 import br.com.wlx.logger.api.Logger
 import br.com.wlx.logger.impl.TimberLogger
+import br.com.wlx.storage.api.Storage
+import br.com.wlx.storage.impl.encrypteddatastore.EncryptedDataStoreStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
@@ -20,7 +22,7 @@ val appModule = module {
 
     single<Logger> { TimberLogger() }
 
-//    single<Storage> { EncryptedDataStoreStorage(get<Context>()) }
+    single<Storage> { EncryptedDataStoreStorage(androidContext()) }
 
     viewModel { SplashViewModel() }
 

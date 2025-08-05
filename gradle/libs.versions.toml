@@ -1,6 +1,5 @@
 [versions]
-#wlxStorage = "0.0.2"
-#wlxUikit = "0.0.1"
+#wlxUikit = "0.0.+"
 activityCompose = "1.10.1"
 agp = "8.12.0"
 composeBom = "2025.07.00"
@@ -18,13 +17,12 @@ mockk = "1.14.5"
 navigationCompose = "2.9.3"
 services = "4.4.3"
 timber = "5.0.1"
-wlxAnalytics = "0.0.1"
-wlxFoundation = "0.0.1"
-wlxLogger = "0.0.3"
+wlxAnalytics = "0.0.+"
+wlxFoundation = "0.0.+"
+wlxLogger = "0.0.+"
+wlxStorage = "0.0.+"
 
 [libraries]
-#wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
-#wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
 #wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +58,8 @@ wlx-analytics-impl = { module = "com.github.welopes:wlx-analytics-impl", version
 wlx-foundation-api = { module = "com.github.welopes:wlx-foundation-api", version.ref = "wlxFoundation" }
 wlx-logger-api = { module = "com.github.welopes:wlx-logger-api", version.ref = "wlxLogger" }
 wlx-logger-impl = { module = "com.github.welopes:wlx-logger-impl", version.ref = "wlxLogger" }
+wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
+wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
 
 [bundles]
 compose = [
