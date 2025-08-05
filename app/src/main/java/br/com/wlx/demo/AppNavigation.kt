@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import br.com.wlx.demo.presentation.AboutScreen
-import br.com.wlx.demo.presentation.MainActivity
+import br.com.wlx.demo.presentation.ui.AboutScreen
+import br.com.wlx.demo.presentation.ui.MainActivity
 import br.com.wlx.login.LoginLauncher
 
 sealed class Journey(val route: String) {

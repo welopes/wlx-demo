@@ -51,8 +51,8 @@ dependencies {
     implementation(platform(libs.compose.bom))
 
     // Structural Libraries
-    implementation(libs.wlx.logger)
-    implementation(libs.wlx.foundation)
+    implementation(libs.wlx.logger.api)
+    implementation(libs.wlx.foundation.api)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

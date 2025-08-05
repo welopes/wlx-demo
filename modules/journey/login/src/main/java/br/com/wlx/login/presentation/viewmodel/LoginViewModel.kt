@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 
 class LoginViewModel(
-     val logger: Logger,
+    val logger: Logger,
 //     val usecase: LoginUseCase
 ) : ViewModel() {
     var uiState by mutableStateOf(LoginUiState())
@@ -30,7 +30,7 @@ class LoginViewModel(
             uiState = uiState.copy(isLoading = true, errorMessage = null)
             try {
                 delay(1000L)
-               // usecase.login(uiState.email, uiState.password)
+                // usecase.login(uiState.email, uiState.password)
             } catch (e: Exception) {
                 logger.error(e)
                 uiState = uiState.copy(errorMessage = e.message ?: "Erro inesperado")

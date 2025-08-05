@@ -9,5 +9,4 @@ val loginModule = module {
 //    single<LoginRepository> { LoginRepositoryImpl(logger = get(), local = null, remote = null) }
 //    single { LoginUseCase(logger = get(), repository = get()) }
     viewModel { LoginViewModel(logger = get()) }
-
 }

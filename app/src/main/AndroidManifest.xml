@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WLXDemo">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.WLXDemo.Splash">
             <intent-filter>

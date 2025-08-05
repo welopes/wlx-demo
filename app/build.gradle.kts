@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -50,7 +52,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.compose.bom))
+    implementation(platform(libs.firebase.bom))
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.firebase)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
     implementation(libs.androidx.navigation.compose)
@@ -61,11 +65,13 @@ dependencies {
     implementation(project(":modules:journey:login"))
 
     // Structural Libraries
-    implementation(libs.wlx.logger)
-    implementation(libs.wlx.foundation)
-    implementation(libs.wlx.analytics)
+    implementation(libs.wlx.logger.api)
+    implementation(libs.wlx.logger.impl)
+    implementation(libs.wlx.foundation.api)
+    implementation(libs.wlx.analytics.api)
+    implementation(libs.wlx.analytics.impl)
 //    implementation(libs.wlx.uikit)
-    implementation(libs.wlx.storage)
+//    implementation(libs.wlx.storage)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

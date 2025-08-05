@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50915065219",
+    "project_id": "wlx-demo",
+    "storage_bucket": "wlx-demo.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50915065219:android:caee549c99c3e697404ab6",
+        "android_client_info": {
+          "package_name": "br.com.wlx.demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrrjjk68vu--ITSrMBV5PRNv9dkgTBDaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

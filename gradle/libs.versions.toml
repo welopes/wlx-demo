@@ -1,4 +1,5 @@
 [versions]
+#wlxStorage = "0.0.2"
 #wlxUikit = "0.0.1"
 activityCompose = "1.10.1"
 agp = "8.12.0"
@@ -6,19 +7,25 @@ composeBom = "2025.07.00"
 coreKtx = "1.16.0"
 coreSplashscreen = "1.0.1"
 espressoCore = "3.7.0"
+firebaseBom = "34.0.0"
+firebaseCrashlytics = "3.0.5"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 koinAndroid = "4.1.0"
 kotlin = "2.2.0"
 lifecycleRuntimeKtx = "2.9.2"
+mockk = "1.14.5"
 navigationCompose = "2.9.3"
+services = "4.4.3"
 timber = "5.0.1"
 wlxAnalytics = "0.0.1"
 wlxFoundation = "0.0.1"
-wlxLogger = "0.0.1"
-wlxStorage = "0.0.1"
+wlxLogger = "0.0.3"
 
 [libraries]
+#wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
+#wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
+#wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
@@ -35,17 +42,24 @@ compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroid" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinAndroid" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinAndroid" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
-wlx-analytics = { module = "com.github.welopes:wlx-analytics", version.ref = "wlxAnalytics" }
-wlx-foundation = { module = "com.github.welopes:wlx-foundation", version.ref = "wlxFoundation" }
-wlx-logger = { module = "com.github.welopes:wlx-logger", version.ref = "wlxLogger" }
-wlx-storage = { module = "com.github.welopes:wlx-storage", version.ref = "wlxStorage" }
-#wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
+wlx-analytics-api = { module = "com.github.welopes:wlx-analytics-api", version.ref = "wlxAnalytics" }
+wlx-analytics-impl = { module = "com.github.welopes:wlx-analytics-impl", version.ref = "wlxAnalytics" }
+wlx-foundation-api = { module = "com.github.welopes:wlx-foundation-api", version.ref = "wlxFoundation" }
+wlx-logger-api = { module = "com.github.welopes:wlx-logger-api", version.ref = "wlxLogger" }
+wlx-logger-impl = { module = "com.github.welopes:wlx-logger-impl", version.ref = "wlxLogger" }
 
 [bundles]
 compose = [
@@ -54,10 +68,14 @@ compose = [
     "compose-material3",
     "compose-ui-tooling-preview"
 ]
+firebase = [
+    "firebase-analytics"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlytics" }
+google-services = { id = "com.google.gms.google-services", version.ref = "services" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-

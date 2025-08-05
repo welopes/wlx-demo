@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import br.com.wlx.login.LoginLauncher.Screen
-import br.com.wlx.login.presentation.LoginScreen
+import br.com.wlx.login.presentation.ui.LoginScreen
 
 class LoginMainFlow(val navGraphBuilder: NavGraphBuilder) {
 

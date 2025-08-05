@@ -1,4 +1,4 @@
-package br.com.wlx.login.presentation
+package br.com.wlx.login.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
