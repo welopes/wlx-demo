@@ -39,6 +39,7 @@ class LoginViewModel(
                 }
 
             } catch (e: Exception) {
+                logger.error("Login failed", e)
                 uiState = uiState.copy(isLoading = false, error = e.message)
             }
         }
