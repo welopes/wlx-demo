@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="login">Login</string>
-    <string name="email">Email</string>
+    <string name="username">Nome de usuário</string>
     <string name="password">Senha</string>
-    <string name="btn_enter">Entrar</string>
+    <string name="btn_login">Login</string>
+    <string name="login_success_message">Login realizado com sucesso!</string>
 </resources>

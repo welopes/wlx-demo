@@ -4,6 +4,10 @@ import br.com.wlx.analytics.api.AnalyticsTracker
 import br.com.wlx.analytics.api.CrashReporter
 import br.com.wlx.analytics.impl.FirebaseAnalyticsTracker
 import br.com.wlx.analytics.impl.FirebaseCrashReporter
+import br.com.wlx.communication.api.CommunicationClient
+import br.com.wlx.communication.api.request.BaseHttpRequest
+import br.com.wlx.communication.api.response.BaseHttpResponse
+import br.com.wlx.communication.impl.OkHttpCommunicationClient
 import br.com.wlx.demo.BuildConfig
 import br.com.wlx.demo.presentation.viewmodel.SplashViewModel
 import br.com.wlx.logger.api.Logger
@@ -24,6 +28,7 @@ val appModule = module {
 
     single<Storage> { EncryptedDataStoreStorage(androidContext()) }
 
-    viewModel { SplashViewModel() }
+    single<CommunicationClient<BaseHttpRequest, BaseHttpResponse>> { OkHttpCommunicationClient("https://wlxdemo.free.beeceptor.com") }
 
+    viewModel { SplashViewModel() }
 }

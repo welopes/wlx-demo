@@ -5,11 +5,12 @@ import br.com.wlx.login.domain.repository.LoginRepository
 
 
 class LoginUseCase(
-    override val repository: LoginRepository?
+    override val repository: LoginRepository
 ) : BaseUseCase {
 
-    fun login(username: String, password: String) {
-//        repository.login(username, password)
+    suspend fun login(username: String, password: String): Boolean {
+        val user = repository.login(username, password)
+        return user.token?.isNotEmpty() ?: false
     }
 
 }

@@ -21,6 +21,7 @@ wlxAnalytics = "0.0.+"
 wlxFoundation = "0.0.+"
 wlxLogger = "0.0.+"
 wlxStorage = "0.0.+"
+wlxCommunication = "0.0.+"
 
 [libraries]
 #wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
@@ -60,6 +61,8 @@ wlx-logger-api = { module = "com.github.welopes:wlx-logger-api", version.ref = "
 wlx-logger-impl = { module = "com.github.welopes:wlx-logger-impl", version.ref = "wlxLogger" }
 wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
 wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
+wlx-communication-api = { module = "com.github.welopes:wlx-communication-api", version.ref = "wlxCommunication" }
+wlx-communication-impl = { module = "com.github.welopes:wlx-communication-impl", version.ref = "wlxCommunication" }
 
 [bundles]
 compose = [

@@ -53,6 +53,7 @@ dependencies {
     // Structural Libraries
     implementation(libs.wlx.logger.api)
     implementation(libs.wlx.foundation.api)
+    implementation(libs.wlx.communication.api)
 
     testImplementation(libs.junit)
     testImplementation(libs.koin.test)

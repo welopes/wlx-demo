@@ -72,6 +72,8 @@ dependencies {
     implementation(libs.wlx.analytics.impl)
     implementation(libs.wlx.storage.api)
     implementation(libs.wlx.storage.impl)
+    implementation(libs.wlx.communication.api)
+    implementation(libs.wlx.communication.impl)
     //    implementation(libs.wlx.uikit)
 
     testImplementation(libs.junit)

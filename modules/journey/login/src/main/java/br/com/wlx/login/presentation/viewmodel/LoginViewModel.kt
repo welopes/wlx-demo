@@ -3,22 +3,23 @@ package br.com.wlx.login.presentation.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.wlx.foundation.presentation.viewmodel.BaseViewModel
 import br.com.wlx.logger.api.Logger
-import kotlinx.coroutines.delay
+import br.com.wlx.login.domain.usecase.LoginUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class LoginViewModel(
-    val logger: Logger,
-//     val usecase: LoginUseCase
-) : ViewModel() {
+    override val useCase: LoginUseCase,
+    val logger: Logger
+) : BaseViewModel() {
+
     var uiState by mutableStateOf(LoginUiState())
         private set
 
-    fun onEmailChange(value: String) {
-        uiState = uiState.copy(email = value)
+    fun onUsernameChange(value: String) {
+        uiState = uiState.copy(username = value)
     }
 
     fun onPasswordChange(value: String) {
@@ -26,16 +27,19 @@ class LoginViewModel(
     }
 
     fun login() {
-        viewModelScope.launch {
-            uiState = uiState.copy(isLoading = true, errorMessage = null)
+        viewModelScope.launch(Dispatchers.IO) {
+            uiState = uiState.copy(isLoading = true, error = null, success = false)
             try {
-                delay(1000L)
-                // usecase.login(uiState.email, uiState.password)
+                val isLogged = useCase.login(uiState.username, uiState.password)
+                if (isLogged) {
+                    uiState = uiState.copy(isLoading = false, success = true)
+                     return@launch
+                } else {
+                    uiState = uiState.copy(isLoading = false, error = "Login failed")
+                }
+
             } catch (e: Exception) {
-                logger.error(e)
-                uiState = uiState.copy(errorMessage = e.message ?: "Erro inesperado")
-            } finally {
-                uiState = uiState.copy(isLoading = false)
+                uiState = uiState.copy(isLoading = false, error = e.message)
             }
         }
     }
