@@ -2,7 +2,7 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-Este projeto é uma aplicação Android de demonstração das bibliotecas da suíte **WLX**, estruturada com **MVVM** e **Clean Architecture**. Ele serve como referência de uso para as seguintes bibliotecas:
+This project is an Android application demonstrating the WLX library suite, structured using MVVM and Clean Architecture. It serves as a usage reference for the following libraries:
 
 - [`wlx-logger`](https://github.com/welopes/wlx-logger)
 - [`wlx-foundation`](https://github.com/welopes/wlx-foundation)
@@ -12,9 +12,9 @@ Este projeto é uma aplicação Android de demonstração das bibliotecas da su�
 
 ---
 
-## 📦 Bibliotecas Usadas
+## 📦 Libraries Used
 
-O projeto demonstra o uso das seguintes bibliotecas modulares:
+This project showcases the usage of the following modular libraries:
 
 - **Logger**
     - `wlx.logger.api`
@@ -35,36 +35,38 @@ O projeto demonstra o uso das seguintes bibliotecas modulares:
     - `wlx.communication.api`
     - `wlx.communication.impl`
 
-Essas bibliotecas são desacopladas e seguem o padrão de separação entre API e implementação para maior flexibilidade e reutilização.
+These libraries are decoupled and follow the API + implementation separation pattern to promote flexibility and reuse.
 
 ---
 
-## 🧱 Arquitetura
-Este projeto segue os princípios da Clean Architecture com separação em camadas:
+## 🧱Architecture
 
-📁 domain       - regras de negócio e casos de uso  
-📁 data         - repositórios e fontes de dados (remota/local)  
-📁 presentation - UI (Jetpack Compose) e ViewModels (MVVM)  
-📁 di           - módulos de injeção de dependência com Koin  
+The project follows a layered architecture:
 
-- **MVVM**: Separação clara entre View (Activity/Fragment), ViewModel e dados.
-- **Clean Architecture**: Camadas de `presentation`, `domain` e `data`, cada uma com sua responsabilidade.
+📁 domain       - business rules and use cases
+📁 data         - repositories and data sources (remote/local)
+📁 presentation - UI (Jetpack Compose) and ViewModels (MVVM)
+📁 di           - dependency injection modules using Koin  
+📁 flow         - Defines and organizes the navigation flows between the screens of a specific feature.
 
----
-
-## 🚀 Funcionalidades
-
-- Tela de login com autenticação via endpoint HTTP.
-- Comunicação genérica utilizando `OkHttpCommunicationClient`.
-- Armazenamento de token com `wlx.storage`.
-- Logs estruturados com `wlx.logger`.
-- Eventos de analytics com `wlx.analytics`.
+- **MVVM**: Clear separation between View (Activity/Fragment), ViewModel, and data layers.
+- **Clean Architecture**: Layered approach with `presentation`, `domain`, and `data`, each with a single responsibility.
 
 ---
 
-## 🧪 Testes
+## 🚀 Features
 
-Você pode testar o app utilizando um endpoint real ou mockado com serviços como:
+- Login screen with authentication via HTTP endpoint.
+- Generic communication using `OkHttpCommunicationClient`.
+- Token storage with `wlx.storage`.
+- Structured logging using `wlx.logger`.
+- Analytics event tracking with `wlx.analytics`.
+
+---
+
+## 🧪 Testing
+
+You can test the app using a real or mocked backend, such as:
 
 - [https://mockapi.io](https://mockapi.io)
 - [https://beeceptor.com](https://beeceptor.com)
@@ -72,42 +74,43 @@ Você pode testar o app utilizando um endpoint real ou mockado com serviços com
 
 ---
 
-## 🚀 Como rodar
-Clone o repositório:
+## 🚀 How to Run
+Clone the repository:
 
-bash
+``bash
+
 git clone https://github.com/welopes/wlx-demo.git
-Abra no Android Studio Hedgehog (ou superior)
+Then open the project in Android Studio Hedgehog (or newer).
 
-Sincronize os scripts do Gradle e execute no emulador ou dispositivo.
-
----
-
-## 🛡️ Licença
-
-Este projeto está licenciado sob a licença **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**.
-
-Você pode:
-
-- Compartilhar
-- Adaptar
-
-**Desde que:**
-
-- Atribua crédito ao autor original
-- **Não utilize para fins comerciais**
-
-Mais informações: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+Finally, sync the Gradle scripts and run the app on an emulator or physical device.
 
 ---
 
-## 🤝 Contribuições
+## 🛡️ License
 
-Contribuições são bem-vindas, desde que respeitem a licença.
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+
+You are free to:
+
+- Share
+- Adapt
+
+**As long as you:**
+
+- Give appropriate credit to the original author
+- **Do not use it for commercial purposes**
+
+More info: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ---
 
-## 👨‍💻 Autor
+## 🤝 Contributions
 
-**Wellington Lopes**  
+Contributions are welcome, as long as they comply with the license.
+
+---
+
+## 👨‍💻 Author
+
+**Wellington Eliel Lopes**  
 [github.com/welopes](https://github.com/welopes)
