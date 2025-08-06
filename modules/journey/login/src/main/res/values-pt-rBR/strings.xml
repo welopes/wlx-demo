@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="username">Nome de usuário</string>
-    <string name="password">Senha</string>
-    <string name="btn_login">Login</string>
-    <string name="login_success_message">Login realizado com sucesso!</string>
-    <string name="show_password">Mostrar senha</string>
-    <string name="hide_password">Ocultar senha</string>
-    <string name="username_min_length_error">Usuário deve ter no mínimo 3 caracteres</string>
-    <string name="password_min_length_error">Senha deve ter no mínimo 5 caracteres</string>
+<!--    <string name="username">Nome de usuário</string>-->
+<!--    <string name="password">Senha</string>-->
+<!--    <string name="btn_login">Login</string>-->
+<!--    <string name="login_success_message">Login realizado com sucesso!</string>-->
+<!--    <string name="show_password">Mostrar senha</string>-->
+<!--    <string name="hide_password">Ocultar senha</string>-->
+<!--    <string name="username_min_length_error">Usuário deve ter no mínimo 3 caracteres</string>-->
+<!--    <string name="password_min_length_error">Senha deve ter no mínimo 5 caracteres</string>-->
 </resources>
