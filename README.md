@@ -79,7 +79,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/welopes/wlx-demo.git  
-
+``` 
 Then open the project in Android Studio Hedgehog (or newer).
 
 Finally, sync the Gradle scripts and run the app on an emulator or physical device.
