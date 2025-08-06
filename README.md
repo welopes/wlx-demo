@@ -43,9 +43,9 @@ These libraries are decoupled and follow the API + implementation separation pat
 
 The project follows a layered architecture:
 
-📁 domain       - business rules and use cases
-📁 data         - repositories and data sources (remote/local)
-📁 presentation - UI (Jetpack Compose) and ViewModels (MVVM)
+📁 domain       - business rules and use cases  
+📁 data         - repositories and data sources (remote/local)  
+📁 presentation - UI (Jetpack Compose) and ViewModels (MVVM)  
 📁 di           - dependency injection modules using Koin  
 📁 flow         - Defines and organizes the navigation flows between the screens of a specific feature.
 
