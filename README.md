@@ -57,7 +57,7 @@ The project follows a layered architecture:
 ## 🚀 Features
 
 - Login screen with authentication via HTTP endpoint.
-- Generic communication using `OkHttpCommunicationClient`.
+- Generic communication using `wlx.communication`.
 - Token storage with `wlx.storage`.
 - Structured logging using `wlx.logger`.
 - Analytics event tracking with `wlx.analytics`.
@@ -77,9 +77,8 @@ You can test the app using a real or mocked backend, such as:
 ## 🚀 How to Run
 Clone the repository:
 
-``bash
-
-git clone https://github.com/welopes/wlx-demo.git
+```bash
+git clone https://github.com/welopes/wlx-demo.git  
 Then open the project in Android Studio Hedgehog (or newer).
 
 Finally, sync the Gradle scripts and run the app on an emulator or physical device.
