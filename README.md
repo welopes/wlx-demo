@@ -10,6 +10,8 @@ Este projeto é uma aplicação Android de demonstração das bibliotecas da su�
 - [`wlx-storage`](https://github.com/welopes/wlx-storage)
 - [`wlx-communication`](https://github.com/welopes/wlx-communication)
 
+---
+
 ## 📦 Bibliotecas Usadas
 
 O projeto demonstra o uso das seguintes bibliotecas modulares:
@@ -35,7 +37,9 @@ O projeto demonstra o uso das seguintes bibliotecas modulares:
 
 Essas bibliotecas são desacopladas e seguem o padrão de separação entre API e implementação para maior flexibilidade e reutilização.
 
-🧱 Arquitetura
+---
+
+## 🧱 Arquitetura
 Este projeto segue os princípios da Clean Architecture com separação em camadas:
 
 📁 domain       - regras de negócio e casos de uso  
@@ -68,7 +72,7 @@ Você pode testar o app utilizando um endpoint real ou mockado com serviços com
 
 ---
 
-🚀 Como rodar
+## 🚀 Como rodar
 Clone o repositório:
 
 bash
@@ -76,6 +80,8 @@ git clone https://github.com/welopes/wlx-demo.git
 Abra no Android Studio Hedgehog (ou superior)
 
 Sincronize os scripts do Gradle e execute no emulador ou dispositivo.
+
+---
 
 ## 🛡️ Licença
 
