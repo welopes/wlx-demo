@@ -29,6 +29,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import br.com.wlx.login.R
 import br.com.wlx.login.presentation.viewmodel.LoginViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -60,6 +61,7 @@ fun LoginScreen(
             Text(
                 text = stringResource(R.string.username_min_length_error),
                 color = Color.Red,
+                fontSize = 12.sp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 4.dp, top = 4.dp)
@@ -91,6 +93,7 @@ fun LoginScreen(
             Text(
                 text = stringResource(R.string.password_min_length_error),
                 color = Color.Red,
+                fontSize = 12.sp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 4.dp, top = 4.dp)
