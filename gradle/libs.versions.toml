@@ -13,15 +13,16 @@ junitVersion = "1.3.0"
 koinAndroid = "4.1.0"
 kotlin = "2.2.0"
 lifecycleRuntimeKtx = "2.9.2"
+materialIconsCore = "1.7.8"
 mockk = "1.14.5"
 navigationCompose = "2.9.3"
 services = "4.4.3"
 timber = "5.0.1"
 wlxAnalytics = "0.0.+"
+wlxCommunication = "0.0.+"
 wlxFoundation = "0.0.+"
 wlxLogger = "0.0.+"
 wlxStorage = "0.0.+"
-wlxCommunication = "0.0.+"
 
 [libraries]
 #wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
@@ -31,6 +32,8 @@ androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", versi
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsCore" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationCompose" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
@@ -56,13 +59,13 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 wlx-analytics-api = { module = "com.github.welopes:wlx-analytics-api", version.ref = "wlxAnalytics" }
 wlx-analytics-impl = { module = "com.github.welopes:wlx-analytics-impl", version.ref = "wlxAnalytics" }
+wlx-communication-api = { module = "com.github.welopes:wlx-communication-api", version.ref = "wlxCommunication" }
+wlx-communication-impl = { module = "com.github.welopes:wlx-communication-impl", version.ref = "wlxCommunication" }
 wlx-foundation-api = { module = "com.github.welopes:wlx-foundation-api", version.ref = "wlxFoundation" }
 wlx-logger-api = { module = "com.github.welopes:wlx-logger-api", version.ref = "wlxLogger" }
 wlx-logger-impl = { module = "com.github.welopes:wlx-logger-impl", version.ref = "wlxLogger" }
 wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
 wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
-wlx-communication-api = { module = "com.github.welopes:wlx-communication-api", version.ref = "wlxCommunication" }
-wlx-communication-impl = { module = "com.github.welopes:wlx-communication-impl", version.ref = "wlxCommunication" }
 
 [bundles]
 compose = [

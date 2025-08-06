@@ -18,22 +18,38 @@ class LoginViewModel(
     var uiState by mutableStateOf(LoginUiState())
         private set
 
-    fun onUsernameChange(value: String) {
-        uiState = uiState.copy(username = value)
+    fun onUsernameChange(newUsername: String) {
+        uiState = uiState.copy(
+            username = newUsername,
+            isLoginButtonEnabled = isValidUsername(newUsername) && isValidPassword(uiState.password)
+        )
     }
 
-    fun onPasswordChange(value: String) {
-        uiState = uiState.copy(password = value)
+    fun onPasswordChange(newPassword: String) {
+        uiState = uiState.copy(
+            password = newPassword,
+            isLoginButtonEnabled = isValidUsername(uiState.username) && isValidPassword(newPassword)
+        )
+    }
+
+    private fun isValidUsername(username: String): Boolean {
+        return username.length >= 3
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        return password.length >= 5
     }
 
     fun login() {
+        if (!uiState.isLoginButtonEnabled) return
+
         viewModelScope.launch(Dispatchers.IO) {
             uiState = uiState.copy(isLoading = true, error = null, success = false)
             try {
                 val isLogged = useCase.login(uiState.username, uiState.password)
                 if (isLogged) {
                     uiState = uiState.copy(isLoading = false, success = true)
-                     return@launch
+                    return@launch
                 } else {
                     uiState = uiState.copy(isLoading = false, error = "Login failed")
                 }

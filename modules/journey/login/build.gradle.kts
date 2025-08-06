@@ -8,10 +8,10 @@ plugins {
 
 android {
     namespace = "br.com.wlx.login"
-    compileSdk =  rootProject.extra["compileSdkVersion"] as Int
+    compileSdk = rootProject.extra["compileSdkVersion"] as Int
 
     defaultConfig {
-        minSdk =  rootProject.extra["minSdkVersion"] as Int
+        minSdk = rootProject.extra["minSdkVersion"] as Int
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.androidx.material.icons.extended)
     implementation(platform(libs.compose.bom))
 
     // Structural Libraries
