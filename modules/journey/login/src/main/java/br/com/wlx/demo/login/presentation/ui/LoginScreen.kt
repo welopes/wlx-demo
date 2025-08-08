@@ -49,6 +49,8 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(stringResource(R.string.welcome), fontSize = 24.sp, modifier = Modifier.padding(bottom = 16.dp))
+
         OutlinedTextField(
             value = state.username,
             onValueChange = viewModel::onUsernameChange,
