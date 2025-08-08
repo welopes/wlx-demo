@@ -50,7 +50,7 @@ fun AppNavigation(navController: NavHostController, activity: MainActivity, star
             navController = navController,
             route = Journey.Home.route,
             onFinish = {
-                activity.finish()
+                activity.finishAffinity()
             }
         )
 
