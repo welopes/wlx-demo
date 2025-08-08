@@ -3,19 +3,19 @@ package br.com.wlx.demo
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import br.com.wlx.demo.presentation.ui.AboutScreen
+import br.com.wlx.demo.home.HomeLauncher
+import br.com.wlx.demo.login.LoginLauncher
+import br.com.wlx.demo.onboarding.OnboardingLauncher
 import br.com.wlx.demo.presentation.ui.MainActivity
-import br.com.wlx.login.LoginLauncher
-import br.com.wlx.onboarding.OnboardingLauncher
 
 sealed class Journey(val route: String) {
     object Onboarding : Journey("onboarding_journey")
     object Login : Journey("login_journey")
+    object Home : Journey("home_journey")
 }
 
 sealed class Screen(val route: String) {
-    object About : Screen("about")
+//    object Terms : Screen("terms")
 }
 
 @Composable
@@ -34,11 +34,25 @@ fun AppNavigation(navController: NavHostController, activity: MainActivity, star
         LoginLauncher(
             navGraphBuilder = this,
             navController = navController,
-            route = Journey.Login.route
+            route = Journey.Login.route,
+            goToHome = {
+                navController.navigate(Journey.Home.route) {
+                    popUpTo(navController.graph.startDestinationId) {
+                        inclusive = true
+                    }
+                    launchSingleTop = true
+                }
+            }
         )
 
-        composable(Screen.About.route) {
-            AboutScreen()
-        }
+        HomeLauncher(
+            navGraphBuilder = this,
+            navController = navController,
+            route = Journey.Home.route,
+            onFinish = {
+                activity.finish()
+            }
+        )
+
     }
 }

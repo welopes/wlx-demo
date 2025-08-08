@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "br.com.wlx.onboarding"
+    namespace = "br.com.wlx.demo.onboarding"
     compileSdk = rootProject.extra["compileSdkVersion"] as Int
 
     defaultConfig {

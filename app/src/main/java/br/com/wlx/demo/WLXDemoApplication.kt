@@ -2,8 +2,9 @@ package br.com.wlx.demo
 
 import android.app.Application
 import br.com.wlx.demo.di.appModule
-import br.com.wlx.login.di.loginModule
-import br.com.wlx.onboarding.di.onboardingModule
+import br.com.wlx.demo.home.di.homeModule
+import br.com.wlx.demo.login.di.loginModule
+import br.com.wlx.demo.onboarding.di.onboardingModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -24,7 +25,7 @@ class WLXDemoApplication : Application() {
             androidLogger(Level.DEBUG)
             androidContext(this@WLXDemoApplication)
 
-            modules(appModule + loginModule + onboardingModule)
+            modules(appModule + onboardingModule + loginModule + homeModule)
         }
     }
 }
