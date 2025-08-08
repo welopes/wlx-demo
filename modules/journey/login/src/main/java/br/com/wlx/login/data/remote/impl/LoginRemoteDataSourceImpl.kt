@@ -13,16 +13,13 @@ class LoginRemoteDataSourceImpl(
 ) : LoginRemoteDataSource {
 
     override suspend fun login(username: String, password: String): LoginResponseDto {
-
-        val json = JSONObject()
-        json.put("username", username)
-        json.put("password", password)
-
         return service.create(
             HttpJsonRequest(
                 method = HttpMethod.POST,
                 path = "/login",
-                json = json
+                json = JSONObject()
+                    .put("username", username)
+                    .put("password", password)
             )
         ).execute().toObject()
     }

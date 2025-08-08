@@ -7,8 +7,10 @@ import androidx.navigation.compose.composable
 import br.com.wlx.demo.presentation.ui.AboutScreen
 import br.com.wlx.demo.presentation.ui.MainActivity
 import br.com.wlx.login.LoginLauncher
+import br.com.wlx.onboarding.OnboardingLauncher
 
 sealed class Journey(val route: String) {
+    object Onboarding : Journey("onboarding_journey")
     object Login : Journey("login_journey")
 }
 
@@ -17,10 +19,18 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun AppNavigation(navController: NavHostController, activity: MainActivity) {
-    val route = Journey.Login.route
+fun AppNavigation(navController: NavHostController, activity: MainActivity, startJourney: String) {
 
-    NavHost(navController = navController, startDestination = route) {
+    NavHost(navController = navController, startDestination = startJourney) {
+        OnboardingLauncher(
+            navGraphBuilder = this,
+            navController = navController,
+            route = Journey.Onboarding.route,
+            onFinish = {
+                navController.navigate(Journey.Login.route)
+            }
+        )
+
         LoginLauncher(
             navGraphBuilder = this,
             navController = navController,

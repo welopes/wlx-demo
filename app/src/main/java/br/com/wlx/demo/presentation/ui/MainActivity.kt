@@ -4,12 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.rememberNavController
 import br.com.wlx.demo.AppNavigation
+import br.com.wlx.demo.presentation.ui.theme.WLXDemoTheme
 import br.com.wlx.demo.presentation.viewmodel.SplashViewModel
-import br.com.wlx.demo.ui.theme.WLXDemoTheme
 import br.com.wlx.logger.api.Logger
 import br.com.wlx.storage.api.Storage
 import kotlinx.coroutines.launch
@@ -31,12 +38,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WLXDemoTheme(darkTheme = false) {
-                AppNavigation(rememberNavController(), this)
+                val startJourney by viewModel.startJourney.collectAsState()
+                if (startJourney.isEmpty()) {
+                    Box(
+                        Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
+                } else {
+                    AppNavigation(rememberNavController(), this, startJourney)
+                }
             }
         }
 
         val logger: Logger by inject()
-        logger.debug( "MainActivity created")
+        logger.debug("MainActivity created")
 
         val storage: Storage by inject()
         lifecycleScope.launch {

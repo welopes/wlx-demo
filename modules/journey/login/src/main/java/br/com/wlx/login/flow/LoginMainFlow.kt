@@ -16,7 +16,12 @@ class LoginMainFlow(val navGraphBuilder: NavGraphBuilder) {
         ) {
             composable(Screen.Login.route) {
                 LoginScreen(onLoginSuccess = {
-                    navController.navigate(Screen.Home.route)
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Login.route) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
                 })
             }
             composable(Screen.Home.route) {

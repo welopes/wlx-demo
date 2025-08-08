@@ -1,4 +1,4 @@
-package br.com.wlx.demo.ui.theme
+package br.com.wlx.demo.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

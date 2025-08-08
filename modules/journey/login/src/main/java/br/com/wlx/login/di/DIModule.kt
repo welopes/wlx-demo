@@ -13,6 +13,6 @@ val loginModule = module {
 
     single<LoginRemoteDataSource> { LoginRemoteDataSourceImpl(service = get()) }
     single<LoginRepository> { LoginRepositoryImpl(remote = get()) }
-    single { LoginUseCase(repository = get()) }
+    factory { LoginUseCase(repository = get()) }
     viewModel { LoginViewModel(logger = get(), useCase = get()) }
 }

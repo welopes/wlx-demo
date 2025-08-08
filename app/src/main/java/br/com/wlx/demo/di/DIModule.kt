@@ -7,6 +7,11 @@ import br.com.wlx.analytics.impl.FirebaseCrashReporter
 import br.com.wlx.communication.api.HttpTaskService
 import br.com.wlx.communication.impl.ExternalHttpTaskService
 import br.com.wlx.demo.BuildConfig
+import br.com.wlx.demo.data.local.UserPreferencesLocalDataSource
+import br.com.wlx.demo.data.local.impl.UserPreferencesLocalDataSourceImpl
+import br.com.wlx.demo.data.repository.impl.UserPreferencesRepositoryImpl
+import br.com.wlx.demo.domain.repository.UserPreferencesRepository
+import br.com.wlx.demo.domain.usecase.CheckOnboardingCompletedUseCase
 import br.com.wlx.demo.presentation.viewmodel.SplashViewModel
 import br.com.wlx.logger.api.Logger
 import br.com.wlx.logger.impl.TimberLogger
@@ -25,8 +30,16 @@ val appModule = module {
     single<Logger> { TimberLogger() }
 
     single<Storage> { EncryptedDataStoreStorage(androidContext()) }
-    
-    single<HttpTaskService> { ExternalHttpTaskService(host = "https://wlxdemo.free.beeceptor.com", logger = get()) }
 
-    viewModel { SplashViewModel() }
+    single<HttpTaskService> {
+        ExternalHttpTaskService(
+            host = "https://wlxdemo.free.beeceptor.com",
+            logger = get()
+        )
+    }
+
+    single<UserPreferencesLocalDataSource> { UserPreferencesLocalDataSourceImpl(storage = get()) }
+    single<UserPreferencesRepository> { UserPreferencesRepositoryImpl(local = get()) }
+    factory { CheckOnboardingCompletedUseCase(repository = get()) }
+    viewModel { SplashViewModel(checkOnboardingCompletedUseCase = get()) }
 }

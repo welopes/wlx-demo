@@ -1,24 +1,29 @@
 package br.com.wlx.demo.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.delay
+import androidx.lifecycle.viewModelScope
+import br.com.wlx.demo.Journey
+import br.com.wlx.demo.domain.usecase.CheckOnboardingCompletedUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
-class SplashViewModel : ViewModel() {
+class SplashViewModel(
+    private val checkOnboardingCompletedUseCase: CheckOnboardingCompletedUseCase
+) : ViewModel() {
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
 
-    init {
-        _isLoading.value = true
-        checkAuthentication()
-        _isLoading.value = false
-    }
+    private val _startJourney = MutableStateFlow("")
+    val startJourney: StateFlow<String> = _startJourney
 
-    private fun checkAuthentication() {
-        runBlocking {
-            delay(10L)
+    init {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val completed = checkOnboardingCompletedUseCase()
+            _startJourney.value = if (completed) Journey.Login.route else Journey.Onboarding.route
+            _isLoading.value = false
         }
     }
+
 }
