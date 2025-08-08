@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wlx_demo">WLX Demo</string>
+    <string name="about">About</string>
+    <string name="home">Home</string>
+    <string name="exit">Exit</string>
+    <string name="confirm_exit">Confirm exit</string>
+    <string name="do_you_really_want_to_exit_the_application">Do you really want to exit the application?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="menu">Menu</string>
+    <string name="close">Close</string>
+</resources>
