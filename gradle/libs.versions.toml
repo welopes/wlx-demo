@@ -1,18 +1,20 @@
 [versions]
 #wlxUikit = "0.0.+"
 activityCompose = "1.10.1"
-agp = "8.12.0"
-composeBom = "2025.07.00"
-coreKtx = "1.16.0"
+agp = "8.12.1"
+appcompat = "1.7.1"
+composeBom = "2025.08.00"
+coreKtx = "1.17.0"
 coreSplashscreen = "1.0.1"
 espressoCore = "3.7.0"
-firebaseBom = "34.0.0"
+firebaseBom = "34.1.0"
 firebaseCrashlytics = "3.0.6"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 koinAndroid = "4.1.0"
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 lifecycleRuntimeKtx = "2.9.2"
+material = "1.12.0"
 materialIconsCore = "1.7.8"
 mockk = "1.14.5"
 navigationCompose = "2.9.3"
@@ -23,12 +25,11 @@ wlxCommunication = "0.0.+"
 wlxFoundation = "0.0.+"
 wlxLogger = "0.0.+"
 wlxStorage = "0.0.+"
-appcompat = "1.7.1"
-material = "1.12.0"
 
 [libraries]
 #wlx-uikit = { module = "com.github.welopes:wlx-uikit", version.ref = "wlxUikit" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -57,6 +58,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndr
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinAndroid" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinAndroid" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koinAndroid" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 wlx-analytics-api = { module = "com.github.welopes:wlx-analytics-api", version.ref = "wlxAnalytics" }
@@ -68,8 +70,6 @@ wlx-logger-api = { module = "com.github.welopes:wlx-logger-api", version.ref = "
 wlx-logger-impl = { module = "com.github.welopes:wlx-logger-impl", version.ref = "wlxLogger" }
 wlx-storage-api = { module = "com.github.welopes:wlx-storage-api", version.ref = "wlxStorage" }
 wlx-storage-impl = { module = "com.github.welopes:wlx-storage-impl", version.ref = "wlxStorage" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [bundles]
 compose = [
