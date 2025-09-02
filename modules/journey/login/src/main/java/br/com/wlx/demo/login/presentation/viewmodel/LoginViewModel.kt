@@ -9,6 +9,7 @@ import br.com.wlx.foundation.presentation.viewmodel.BaseViewModel
 import br.com.wlx.logger.api.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginViewModel(
     override val useCase: LoginUseCase,
@@ -43,20 +44,29 @@ class LoginViewModel(
     fun login() {
         if (!uiState.isLoginButtonEnabled) return
 
-        viewModelScope.launch(Dispatchers.IO) {
-            uiState = uiState.copy(isLoading = true, error = null, success = false)
+        viewModelScope.launch {
+            withContext(Dispatchers.Main) {
+                uiState = uiState.copy(isLoading = true, error = null, success = false)
+            }
+
             try {
-                val isLogged = useCase.login(uiState.username, uiState.password)
-                if (isLogged) {
-                    uiState = uiState.copy(isLoading = false, success = true)
-                    return@launch
-                } else {
-                    uiState = uiState.copy(isLoading = false, error = "Login failed")
+                val isLogged = withContext(Dispatchers.IO) {
+                    useCase.login(uiState.username, uiState.password)
+                }
+
+                withContext(Dispatchers.Main) {
+                    uiState = if (isLogged) {
+                        uiState.copy(isLoading = false, success = true)
+                    } else {
+                        uiState.copy(isLoading = false, error = "Login failed")
+                    }
                 }
 
             } catch (e: Exception) {
                 logger.error("Login failed", e)
-                uiState = uiState.copy(isLoading = false, error = e.message)
+                withContext(Dispatchers.Main) {
+                    uiState = uiState.copy(isLoading = false, error = e.message)
+                }
             }
         }
     }

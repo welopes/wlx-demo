@@ -14,11 +14,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
@@ -58,7 +58,8 @@ import br.com.wlx.demo.home.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-    val scrollState = rememberScrollState()
+    val scrollState = rememberLazyListState() // não precisa se tiver LazyColumn
+
     var text by remember { mutableStateOf("") }
     var checked by remember { mutableStateOf(false) }
     var switchOn by remember { mutableStateOf(false) }
@@ -66,164 +67,176 @@ fun HomeScreen() {
     val options = listOf("Option 1", "Option 2", "Option 3")
     var sliderPosition by remember { mutableStateOf(0.5f) }
     var rating by remember { mutableStateOf(3) }
+    var expanded by remember { mutableStateOf(false) }
 
-    Column(
+    LazyColumn(
+        state = scrollState,
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Welcome to the Home Screen!", style = MaterialTheme.typography.headlineLarge)
-
-        Text("Showcasing many Compose UI components.", style = MaterialTheme.typography.bodyLarge)
-
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(8.dp)
-        ) {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Card Title", style = MaterialTheme.typography.headlineSmall)
-                Text(
-                    "This is a card with some example text.",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
+        item {
+            Text("Welcome to the Home Screen!", style = MaterialTheme.typography.headlineLarge)
         }
 
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Button(onClick = { /* primary action */ }, modifier = Modifier.weight(1f)) {
-                Text("Primary")
-            }
-            OutlinedButton(onClick = { /* secondary action */ }, modifier = Modifier.weight(1f)) {
-                Text("Secondary")
-            }
+        item {
+            Text("Showcasing many Compose UI components.", style = MaterialTheme.typography.bodyLarge)
         }
 
-        OutlinedTextField(
-            value = text,
-            onValueChange = { text = it },
-            label = { Text("Input Text") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(checked = checked, onCheckedChange = { checked = it })
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Accept Terms")
-        }
-
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Switch(checked = switchOn, onCheckedChange = { switchOn = it })
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Enable Notifications")
-        }
-
-        var expanded by remember { mutableStateOf(false) }
-        var selectedOption by remember { mutableStateOf("Option 1") }
-        val options = listOf("Option 1", "Option 2", "Option 3")
-
-        Box(modifier = Modifier.fillMaxWidth()) {
-            OutlinedTextField(
-                value = selectedOption,
-                onValueChange = {},
-                label = { Text("Select an option") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { expanded = true },
-                readOnly = true,
-                trailingIcon = {
-                    Icon(
-                        imageVector = if (expanded) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
-                        contentDescription = null
-                    )
-                },
-                enabled = false // evita abrir o teclado
-            )
-
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-                modifier = Modifier.fillMaxWidth()
+        item {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(8.dp)
             ) {
-                options.forEach { option ->
-                    DropdownMenuItem(onClick = {
-                        selectedOption = option
-                        expanded = false
-                    }, text = { Text(option) })
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text("Card Title", style = MaterialTheme.typography.headlineSmall)
+                    Text("This is a card with some example text.", style = MaterialTheme.typography.bodyMedium)
                 }
             }
         }
 
-        // Slider
-        Column {
-            Text(
-                "Volume: ${(sliderPosition * 100).toInt()}%",
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Slider(value = sliderPosition, onValueChange = { sliderPosition = it })
+        item {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Button(onClick = { /* primary action */ }, modifier = Modifier.weight(1f)) { Text("Primary") }
+                OutlinedButton(onClick = { /* secondary action */ }, modifier = Modifier.weight(1f)) { Text("Secondary") }
+            }
         }
 
-        // Image example
-        Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = "Sample Image",
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(180.dp)
-                .clip(RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop
-        )
+        item {
+            OutlinedTextField(
+                value = text,
+                onValueChange = { text = it },
+                label = { Text("Input Text") },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
 
-        // LazyRow horizontal list of cards
-        Text("Featured Items", style = MaterialTheme.typography.headlineSmall)
-        LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            items(listOf("One", "Two", "Three", "Four", "Five")) { item ->
-                Card(
-                    modifier = Modifier.size(width = 140.dp, height = 120.dp),
-                    elevation = CardDefaults.cardElevation(6.dp)
+        item {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(checked = checked, onCheckedChange = { checked = it })
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Accept Terms")
+            }
+        }
+
+        item {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Switch(checked = switchOn, onCheckedChange = { switchOn = it })
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Enable Notifications")
+            }
+        }
+
+        item {
+            Box(modifier = Modifier.fillMaxWidth()) {
+                OutlinedTextField(
+                    value = selectedOption,
+                    onValueChange = {},
+                    label = { Text("Select an option") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { expanded = true },
+                    readOnly = true,
+                    trailingIcon = {
+                        Icon(
+                            imageVector = if (expanded) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
+                            contentDescription = null
+                        )
+                    },
+                    enabled = false
+                )
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Text(item, style = MaterialTheme.typography.headlineMedium)
+                    options.forEach { option ->
+                        DropdownMenuItem(onClick = {
+                            selectedOption = option
+                            expanded = false
+                        }, text = { Text(option) })
                     }
                 }
             }
         }
 
-        // Rating Bar (simulado com Row de Icons)
-        Text("Rate us:", style = MaterialTheme.typography.bodyLarge)
-        Row {
-            repeat(5) { index ->
-                Icon(
-                    imageVector = if (index < rating) Icons.Default.Star else Icons.Default.StarBorder,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clickable { rating = index + 1 },
-                    tint = MaterialTheme.colorScheme.primary
-                )
+        item {
+            Column {
+                Text("Volume: ${(sliderPosition * 100).toInt()}%", style = MaterialTheme.typography.bodyMedium)
+                Slider(value = sliderPosition, onValueChange = { sliderPosition = it })
             }
         }
 
-        HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
+        item {
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                contentDescription = "Sample Image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(180.dp)
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+        }
 
-        // Footer with button and text
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text("Thank you for visiting!", style = MaterialTheme.typography.bodyMedium)
-            TextButton(onClick = { /* contact action */ }) {
-                Text("Contact Us")
+        item {
+            Text("Featured Items", style = MaterialTheme.typography.headlineSmall)
+        }
+
+        item {
+            LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                items(listOf("One", "Two", "Three", "Four", "Five")) { item ->
+                    Card(
+                        modifier = Modifier.size(width = 140.dp, height = 120.dp),
+                        elevation = CardDefaults.cardElevation(6.dp)
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text(item, style = MaterialTheme.typography.headlineMedium)
+                        }
+                    }
+                }
+            }
+        }
+
+        item {
+            Text("Rate us:", style = MaterialTheme.typography.bodyLarge)
+            Row {
+                repeat(5) { index ->
+                    Icon(
+                        imageVector = if (index < rating) Icons.Default.Star else Icons.Default.StarBorder,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable { rating = index + 1 },
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
+        }
+
+        item {
+            HorizontalDivider(Modifier, DividerDefaults.Thickness, DividerDefaults.color)
+        }
+
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text("Thank you for visiting!", style = MaterialTheme.typography.bodyMedium)
+                TextButton(onClick = { /* contact action */ }) {
+                    Text("Contact Us")
+                }
             }
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

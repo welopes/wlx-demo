@@ -4,8 +4,8 @@ import br.com.wlx.analytics.api.AnalyticsTracker
 import br.com.wlx.analytics.api.CrashReporter
 import br.com.wlx.analytics.impl.FirebaseAnalyticsTracker
 import br.com.wlx.analytics.impl.FirebaseCrashReporter
-import br.com.wlx.communication.api.HttpTaskService
-import br.com.wlx.communication.impl.ExternalHttpTaskService
+import br.com.wlx.communication.api.ApiClient
+import br.com.wlx.communication.impl.OkHttpApiClient
 import br.com.wlx.demo.BuildConfig
 import br.com.wlx.demo.data.local.UserPreferencesLocalDataSource
 import br.com.wlx.demo.data.local.impl.UserPreferencesLocalDataSourceImpl
@@ -19,6 +19,7 @@ import br.com.wlx.storage.api.Storage
 import br.com.wlx.storage.impl.encrypteddatastore.EncryptedDataStoreStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val appModule = module {
@@ -31,9 +32,19 @@ val appModule = module {
 
     single<Storage> { EncryptedDataStoreStorage(androidContext()) }
 
-    single<HttpTaskService> {
-        ExternalHttpTaskService(
-            host = "https://wlxdemo.free.beeceptor.com",
+    single<String>(qualifier = named("BASE_URL")) {
+        "https://wlxdemo.free.beeceptor.com"
+    }
+
+//    single<CertificatePinner?> {
+//        CertificatePinner.Builder()
+//            .add("api.seuservidor.com", "sha256/AAAA...")
+//            .build()
+//    }
+
+    single<ApiClient> {
+        OkHttpApiClient(
+            baseUrl = get(qualifier = named("BASE_URL")),
             logger = get()
         )
     }

@@ -5,8 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -38,16 +41,18 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WLXDemoTheme(darkTheme = false) {
-                val startJourney by viewModel.startJourney.collectAsState()
-                if (startJourney.isEmpty()) {
-                    Box(
-                        Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
+                AppRoot {
+                    val startJourney by viewModel.startJourney.collectAsState()
+                    if (startJourney.isEmpty()) {
+                        Box(
+                            Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CircularProgressIndicator()
+                        }
+                    } else {
+                        AppNavigation(rememberNavController(), this, startJourney)
                     }
-                } else {
-                    AppNavigation(rememberNavController(), this, startJourney)
                 }
             }
         }
@@ -61,5 +66,17 @@ class MainActivity : ComponentActivity() {
             storage.putString(key, "Welcome to WLX Demo!")
             logger.info(storage.getString(key) ?: "No welcome message found")
         }
+    }
+}
+
+@Composable
+private fun AppRoot(content: @Composable () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+//            .statusBarsPadding()
+            .navigationBarsPadding()
+    ) {
+        content()
     }
 }
