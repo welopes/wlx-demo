@@ -1,8 +1,8 @@
 package br.com.wlx.demo.login.presentation.viewmodel
 
 data class LoginUiState(
-    val username: String = "sdsds",
-    val password: String = "sdsdsds",
+    val username: String = "",
+    val password: String = "",
     val isLoading: Boolean = false,
     val error: String? = null,
     val success: Boolean = false,
